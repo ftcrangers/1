@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITKAN Rangers #28922 - Official Robotics Hub</title>
+    <style>
+        :root {
+            --bg-primary: #0a0f1d;
+            --bg-secondary: #141b2d;
+            --accent-green: #00ff66;
+            --accent-blue: #00d9ff;
+            --text-main: #ffffff;
+            --text-muted: #8fa0dd;
+            --border-glow: rgba(0, 255, 102, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border-bottom: 2px solid var(--accent-green);
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 30px var(--border-glow);
+        }
+
+        .hero-badge {
+            background: rgba(0, 255, 102, 0.1);
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: linear-gradient(120deg, var(--text-main), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 25px auto;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .nav-links a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-green);
+            border-color: var(--accent-green);
+            background: rgba(0, 255, 102, 0.05);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--accent-blue);
+            padding-left: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .stat-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            position: relative;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+        }
+
+        .stat-value {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--accent-green);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 50px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        .data-table th {
+            background-color: rgba(0, 217, 255, 0.1);
+            color: var(--accent-blue);
+            padding: 16px 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .data-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:hover {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .highlight-text {
+            color: var(--accent-green);
+            font-weight: 600;
+        }
+
+        .achieve-list {
+            list-style: none;
+            margin-bottom: 50px;
+        }
+
+        .achieve-item {
+            background-color: var(--bg-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px 25px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-left: 4px solid var(--accent-green);
+        }
+
+        .achieve-icon {
+            font-size: 1.5rem;
+            background: rgba(0, 255, 102, 0.1);
+            padding: 10px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-green);
+        }
+
+        .achieve-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 3px;
+        }
+
+        .achieve-content p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .process-step {
+            margin-bottom: 30px;
+            background: linear-gradient(to right, var(--bg-secondary), transparent);
+            padding: 20px;
+            border-radius: 8px;
+            border-right: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .process-step h3 {
+            color: var(--accent-blue);
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+
+        .process-step p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="hero-badge">FTC Team #28922</div>
+        <h1>ITKAN RANGERS</h1>
+        <p class="subtitle">Engineering the future with precision, passion, and competitive dominance from Plano, Texas.</p>
+        <div class="nav-links">
+            <a href="#stats">Season Stats</a>
+            <a href="#achievements">Achievements</a>
+            <a href="#engineering">Engineering Process</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="stats">
+            <h2 class="section-title">Last Season Scouting Report</h2>
+            <div class="grid-container">
+                <div class="stat-card">
+                    <div class="stat-value">20-11</div>
+                    <div class="stat-label">Official Match Record</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">17-9</div>
+                    <div class="stat-label">Qualification Record</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">3-2</div>
+                    <div class="stat-label">Playoff Record</div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Metric Category</th>
+                            <th>FTC Scout / Benchmark Metric Details</th>
+                            <th>Performance Standing</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Region Location</td>
+                            <td>Texas - FiT (North Region Network)</td>
+                            <td class="highlight-text">Plano, TX, USA</td>
+                        </tr>
+                        <tr>
+                            <td>League Association</td>
+                            <td>FiT-North U-League (AM & PM Sessions)</td>
+                            <td class="highlight-text">Active Competitor</td>
+                        </tr>
+                        <tr>
+                            <td>Rookie Season Year</td>
+                            <td>Established 2024 Competition Cycle</td>
+                            <td class="highlight-text">Rapid Growth Track</td>
+                        </tr>
+                        <tr>
+                            <td>Alliance Selection Profile</td>
+                            <td>High-Seed Selection & Playoff Contender</td>
+                            <td class="highlight-text">Top Pick Tier</td>
+                        </tr>
